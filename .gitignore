@@ -1,5 +1,21 @@
-out
-dist
-node_modules
+# Build output
+out/
+dist/
+
+# Dependencies
+node_modules/
+
+# VS Code test environment
 .vscode-test/
+
+# Local VS Code settings
+.vscode/
+
+# Packaged extensions
 *.vsix
+
+# Source maps
+*.map
+
+# Logs
+*.log
