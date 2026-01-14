@@ -7,7 +7,7 @@ export function activate(context: vscode.ExtensionContext) {
     /* ---------------------------------------------------------
        MAIN COMMAND: RUN SHELL COMMAND AND INSERT OUTPUT
     --------------------------------------------------------- */
-    const runCmd = vscode.commands.registerCommand('insertCommandOutput.run', async () => {
+    const runCmd = vscode.commands.registerCommand('readShell.run', async () => {
 
         const editor = vscode.window.activeTextEditor;
         if (!editor) {
@@ -25,7 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
         const remote = vscode.env.remoteName;
         const platform = os.platform();
 
-        const config = vscode.workspace.getConfiguration("insertCommandOutput");
+        const config = vscode.workspace.getConfiguration("readShell");
         const stderrBehavior = config.get<string>("stderrBehavior", "message");
 
         let shell: string | undefined = undefined;
@@ -35,7 +35,6 @@ export function activate(context: vscode.ExtensionContext) {
         } else if (platform === "win32") {
             shell = config.get<string>("defaultShell.windows", "cmd.exe");
         }
-
 
         exec(command, { shell }, (error, stdout, stderr) => {
 
@@ -64,9 +63,9 @@ export function activate(context: vscode.ExtensionContext) {
     /* ---------------------------------------------------------
        CLEAR HISTORY COMMAND
     --------------------------------------------------------- */
-    const clearHistoryCmd = vscode.commands.registerCommand('insertCommandOutput.clearHistory', async () => {
+    const clearHistoryCmd = vscode.commands.registerCommand('readShell.clearHistory', async () => {
         await context.globalState.update("history", []);
-        vscode.window.showInformationMessage("Insert Command Output: History cleared");
+        vscode.window.showInformationMessage("Read Shell: History cleared");
     });
 
     /* ---------------------------------------------------------
@@ -74,8 +73,8 @@ export function activate(context: vscode.ExtensionContext) {
     --------------------------------------------------------- */
     const configWatcher = vscode.workspace.onDidChangeConfiguration(e => {
         if (
-            e.affectsConfiguration("insertCommandOutput.runKeybinding") ||
-            e.affectsConfiguration("insertCommandOutput.clearHistoryKeybinding")
+            e.affectsConfiguration("readShell.runKeybinding") ||
+            e.affectsConfiguration("readShell.clearHistoryKeybinding")
         ) {
             vscode.window.showInformationMessage(
                 "Keybinding setting changed. Click to open Keyboard Shortcuts.",
@@ -98,7 +97,7 @@ export function deactivate() { }
 --------------------------------------------------------- */
 
 function pushHistory(context: vscode.ExtensionContext, cmd: string) {
-    const config = vscode.workspace.getConfiguration("insertCommandOutput");
+    const config = vscode.workspace.getConfiguration("readShell");
     const size = config.get<number>("historySize", 10);
 
     const history = context.globalState.get<string[]>("history", []);
@@ -116,7 +115,7 @@ function getHistory(context: vscode.ExtensionContext): string[] {
 --------------------------------------------------------- */
 
 async function askForCommand(context: vscode.ExtensionContext): Promise<string | undefined> {
-    const config = vscode.workspace.getConfiguration("insertCommandOutput");
+    const config = vscode.workspace.getConfiguration("readShell");
 
     const snippets = config.get<string[]>("snippets", []);
     const history = getHistory(context);

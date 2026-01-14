@@ -3,7 +3,7 @@
   "displayName": "Read Shell",
   "publisher": "ekomateas",
   "description": "Run shell commands and read their output directly into the active editor.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.108.0"
   },
@@ -14,28 +14,27 @@
     "type": "git",
     "url": "https://github.com/ekomateas/vscode-read-shell.git"
   },
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:readShell.run",
+    "onCommand:readShell.clearHistory"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
       "title": "Read Shell",
       "properties": {
-        "insertCommandOutput.stderrBehavior": {
+        "readShell.stderrBehavior": {
           "type": "string",
-          "enum": [
-            "ignore",
-            "message",
-            "insert"
-          ],
+          "enum": ["ignore", "message", "insert"],
           "default": "message",
           "description": "How to handle stderr: ignore it, show as message, or insert into file."
         },
-        "insertCommandOutput.historySize": {
+        "readShell.historySize": {
           "type": "number",
           "default": 10,
           "description": "How many recent commands to remember."
         },
-        "insertCommandOutput.snippets": {
+        "readShell.snippets": {
           "type": "array",
           "default": [],
           "description": "List of predefined command snippets.",
@@ -43,22 +42,22 @@
             "type": "string"
           }
         },
-        "insertCommandOutput.runKeybinding": {
+        "readShell.runKeybinding": {
           "type": "string",
           "default": "ctrl+alt+r",
           "description": "Suggested keybinding for running commands (must be manually added to keybindings.json)."
         },
-        "insertCommandOutput.clearHistoryKeybinding": {
+        "readShell.clearHistoryKeybinding": {
           "type": "string",
           "default": "ctrl+alt+shift+r",
           "description": "Suggested keybinding for clearing history (must be manually added to keybindings.json)."
         },
-        "insertCommandOutput.defaultShell.windows": {
+        "readShell.defaultShell.windows": {
           "type": "string",
           "default": "cmd.exe",
           "description": "Default shell to use on Windows."
         },
-        "insertCommandOutput.defaultShell.linux": {
+        "readShell.defaultShell.linux": {
           "type": "string",
           "default": "/bin/bash",
           "description": "Default shell to use on Linux or WSL."
@@ -67,11 +66,11 @@
     },
     "commands": [
       {
-        "command": "insertCommandOutput.run",
+        "command": "readShell.run",
         "title": "Read Shell: Run Command"
       },
       {
-        "command": "insertCommandOutput.clearHistory",
+        "command": "readShell.clearHistory",
         "title": "Read Shell: Clear History"
       }
     ]

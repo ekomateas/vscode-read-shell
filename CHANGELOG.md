@@ -19,3 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Suggested keybindings for running commands and clearing history
 - Extension icon and branding
 - README and documentation
+
+## 0.0.2
+- Renamed extension from Insert Command Output to Read Shell
+- Updated command IDs and activation events
