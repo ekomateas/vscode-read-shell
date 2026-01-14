@@ -2,6 +2,7 @@
   "name": "read-shell",
   "displayName": "Read Shell",
   "publisher": "ekomateas",
+  "icon": "icon.png",
   "description": "Run shell commands and read their output directly into the active editor.",
   "version": "0.0.2",
   "engines": {
