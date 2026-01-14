@@ -1,0 +1,93 @@
+{
+  "name": "read-shell",
+  "displayName": "Read Shell",
+  "publisher": "ekomateas",
+  "description": "Run shell commands and read their output directly into the active editor.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Read Shell",
+      "properties": {
+        "insertCommandOutput.stderrBehavior": {
+          "type": "string",
+          "enum": [
+            "ignore",
+            "message",
+            "insert"
+          ],
+          "default": "message",
+          "description": "How to handle stderr: ignore it, show as message, or insert into file."
+        },
+        "insertCommandOutput.historySize": {
+          "type": "number",
+          "default": 10,
+          "description": "How many recent commands to remember."
+        },
+        "insertCommandOutput.snippets": {
+          "type": "array",
+          "default": [],
+          "description": "List of predefined command snippets.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "insertCommandOutput.runKeybinding": {
+          "type": "string",
+          "default": "ctrl+alt+r",
+          "description": "Suggested keybinding for running commands (must be manually added to keybindings.json)."
+        },
+        "insertCommandOutput.clearHistoryKeybinding": {
+          "type": "string",
+          "default": "ctrl+alt+shift+r",
+          "description": "Suggested keybinding for clearing history (must be manually added to keybindings.json)."
+        },
+        "insertCommandOutput.defaultShell.windows": {
+          "type": "string",
+          "default": "cmd.exe",
+          "description": "Default shell to use on Windows."
+        },
+        "insertCommandOutput.defaultShell.linux": {
+          "type": "string",
+          "default": "/bin/bash",
+          "description": "Default shell to use on Linux or WSL."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "insertCommandOutput.run",
+        "title": "Read Shell: Run Command"
+      },
+      {
+        "command": "insertCommandOutput.clearHistory",
+        "title": "Read Shell: Clear History"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.108.1",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.52.0",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
