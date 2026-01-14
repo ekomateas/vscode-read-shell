@@ -10,3 +10,5 @@ vsc-extension-quickstart.md
 **/*.ts
 **/.vscode-test.*
 node_modules/
+icon-1024x1024.png
+
