@@ -4,7 +4,7 @@
   "publisher": "ekomateas",
   "icon": "icon.png",
   "description": "Run shell commands and read their output directly into the active editor.",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.108.0"
   },
