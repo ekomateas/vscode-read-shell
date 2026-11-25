@@ -25,13 +25,13 @@ Read Shell is a minimal, cross‑platform VS Code extension that lets you execut
 
 | Setting | Description |
 |--------|-------------|
-| `insertCommandOutput.stderrBehavior` | How to handle stderr (`ignore`, `message`, `insert`) |
-| `insertCommandOutput.historySize` | Number of recent commands to remember |
-| `insertCommandOutput.snippets` | List of predefined command snippets |
-| `insertCommandOutput.runKeybinding` | Suggested keybinding for running commands |
-| `insertCommandOutput.clearHistoryKeybinding` | Suggested keybinding for clearing history |
-| `insertCommandOutput.defaultShell.windows` | Default shell on Windows |
-| `insertCommandOutput.defaultShell.linux` | Default shell on Linux/WSL |
+| `readShell.stderrBehavior` | How to handle stderr (`ignore`, `message`, `insert`) |
+| `readShell.historySize` | Number of recent commands to remember |
+| `readShell.snippets` | List of predefined command snippets |
+| `readShell.runKeybinding` | Suggested keybinding for running commands |
+| `readShell.clearHistoryKeybinding` | Suggested keybinding for clearing history |
+| `readShell.defaultShell.windows` | Default shell on Windows |
+| `readShell.defaultShell.linux` | Default shell on Linux/WSL |
 
 ---
 
@@ -42,12 +42,12 @@ Add these to your `keybindings.json`:
 ```json
 {
   "key": "ctrl+alt+r",
-  "command": "insertCommandOutput.run",
+  "command": "readShell.run",
   "when": "editorTextFocus"
 },
 {
   "key": "ctrl+alt+shift+r",
-  "command": "insertCommandOutput.clearHistory",
+  "command": "readShell.clearHistory",
   "when": "editorTextFocus"
 }
 ```
