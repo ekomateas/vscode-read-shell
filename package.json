@@ -4,7 +4,7 @@
   "publisher": "ekomateas",
   "icon": "icon.png",
   "description": "Run shell commands and read their output directly into the active editor.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.108.0"
   },
@@ -16,8 +16,7 @@
     "url": "https://github.com/ekomateas/vscode-read-shell.git"
   },
   "activationEvents": [
-    "onCommand:readShell.run",
-    "onCommand:readShell.clearHistory"
+    
   ],
   "main": "./out/extension.js",
   "contributes": {
