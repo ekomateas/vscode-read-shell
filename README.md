@@ -82,3 +82,8 @@ Read Shell keeps that workflow alive inside VS Code — clean, minimal, predicta
 ## 🧩 License
 
 MIT
+
+---
+
+Repository ownership verification for VS Marketplace support.
+Verification date: 2026-11-26.
